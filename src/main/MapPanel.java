@@ -7,7 +7,7 @@ import java.awt.*;
 
 public class MapPanel extends JPanel {
     // Classes
-    Map map = new Map(32, 64, 512, 512, 64, this);
+    public Map map = new Map(32, 64, 512, 512, 64, this);
     World world = new World(608, 64, 512, 512, 64, this);
     BoxSelect boxSelect = new BoxSelect(32, 640, 480, 48, 48, this);
     public Box box = new Box(32, 688, 480, 96, 48, this);

@@ -32,6 +32,7 @@ public class World extends MyRectangle{
                 check = true;
 
             } else check = false;
+
             mp.map.check = false;
             mp.map.drawCheck = true;
         }

@@ -20,13 +20,13 @@ public class BoxSelect extends MyRectangle {
     protected void clickBoxSelect(int x, int y) {
         if (contains(x, y)) {
 
-            int findX =(x - this.x) / cut;
-            if (findX >= 0 && findX <= 9) {
+            int indexX =(x - this.x) / cut;
+            if (indexX >= 0 && indexX <= 9) {
 
-                setFindX(findX);
+                setFindX(indexX);
                 setFindY(0);
 
-                int maxTiles = mp.box.getCutWidth() * mp.box.getCutHeight() * findX;
+                int maxTiles = mp.box.getCutWidth() * mp.box.getCutHeight() * indexX;
 
                 if (mp.tileManager.tiles.size() > maxTiles) {
                     mp.box.tileNumbers = mp.box.numbers(maxTiles);

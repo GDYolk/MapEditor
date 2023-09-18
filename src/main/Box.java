@@ -29,16 +29,16 @@ public class Box extends MyRectangle {
 
     protected void clickBox(int x, int y) {
         if (contains(x, y)) {
-            int findX =(x - getX()) / getCut(); // Calculate valueUp
-            int findY =(y - getY()) / getCut(); // Calculate valueUp
+            int indexX =(x - getX()) / getCut();
+            int indexY =(y - getY()) / getCut();
 
-            if ((findX >= 0 && findX <= getCutWidth())
-                    && (findY >= 0 && findY <= getCutHeight())) {
+            if ((indexX >= 0 && indexX <= getCutWidth())
+                    && (indexY >= 0 && indexY <= getCutHeight())) {
 
-                setFindX(findX);
-                setFindY(findY);
+                setFindX(indexX);
+                setFindY(indexY);
 
-                check = mp.box.tileNumbers[findY][findX] < mp.tileManager.tiles.size();
+                check = mp.box.tileNumbers[indexY][indexX] < mp.tileManager.tiles.size();
             } else {
                 check = false;
             }
