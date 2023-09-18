@@ -3,12 +3,14 @@ package main;
 import java.awt.*;
 
 public class World extends MyRectangle{
-    int[][] totalMap = constNumber(mp.map.getCutHeight() * getCutHeight(), mp.map.getCutWidth() * getCutWidth());
+    int[][] totalMap = constNumber(
+            mp.map.getCutHeight() * super.getCutHeight(),
+            mp.map.getCutWidth() * super.getCutWidth());
 
     public World(int x, int y, int width, int height, int cut, MapPanel mp) {
         super(x, y, width, height, cut, mp);
     }
-    protected int[][] constNumber(int row, int col) {
+    private int[][] constNumber(int row, int col) {
         int[][] constA = new int[row][col];
 
         for ( int i = 0; i < row; i++ ) {
@@ -20,29 +22,28 @@ public class World extends MyRectangle{
     }
 
     protected void clickWorld(int x, int y) {
-        if (contains(x, y)) {
-            int indexX =(x - getX()) / getCut(); // Calculate row
-            int indexY =(y - getY()) / getCut(); // Calculate col
+        if (super.contains(x, y)) {
+            int indexX =(x - super.getX()) / super.getCut();
+            int indexY =(y - super.getY()) / super.getCut();
 
-            if ((indexX >= 0 && indexX <= getCutWidth())
-                    && (indexY >= 0 && indexY <= getCutHeight())) {
-                setFindX(indexX);
-                setFindY(indexY);
+            if ((indexX >= 0 && indexX <= super.getCutWidth())
+                    && (indexY >= 0 && indexY <= super.getCutHeight())) {
+                super.setFindX(indexX);
+                super.setFindY(indexY);
 
-                check = true;
-
-            } else check = false;
+                super.check = true;
+                mp.map.drawCheck = true;
+            } else super.check = false;
 
             mp.map.check = false;
-            mp.map.drawCheck = true;
         }
     }
 
     protected void totalWorldShow(int x, int y) {
         if (x > 0 && x <= 32 && y > 0 && y <= 32) {
-            for (int i = 0; i < mp.map.getCutHeight() * mp.world.getCutHeight(); i++) {
-                for (int j = 0; j < mp.map.getCutWidth() * mp.world.getCutWidth(); j++) {
-                    System.out.print(totalMap[i][j]);
+            for (int i = 0; i < mp.map.getCutHeight() * super.getCutHeight(); i++) {
+                for (int j = 0; j < mp.map.getCutWidth() * super.getCutWidth(); j++) {
+                    System.out.print(this.totalMap[i][j]);
                 }
                 System.out.println();
             }
@@ -56,13 +57,13 @@ public class World extends MyRectangle{
     }
 
     protected void paintWorld() {
-        drawSelf(Color.magenta);
-        drawCol(Color.magenta, 3);
-        drawRow(Color.magenta, 3);
-        drawText("World Screen", Color.magenta, 32);
+        super.drawSelf(Color.magenta);
+        super.drawCol(Color.magenta, 3);
+        super.drawRow(Color.magenta, 3);
+        super.drawText("World Screen", Color.magenta, 32);
 
-        if (check) {
-            selected();
+        if (super.check) {
+            super.selected();
         }
     }
 }

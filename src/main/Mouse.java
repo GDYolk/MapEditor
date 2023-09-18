@@ -25,6 +25,7 @@ public class Mouse implements MouseListener {
         mp.world.clickWorld(x, y);
 
         mp.world.totalWorldShow(x, y);
+
         mp.repaint();
     }
 

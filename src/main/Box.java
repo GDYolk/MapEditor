@@ -17,10 +17,10 @@ public class Box extends MyRectangle {
 
     public int[][] numbers(int valueUp) {
 
-        int[][] boxVolume = new int[getCutHeight()][getCutWidth()];
+        int[][] boxVolume = new int[super.getCutHeight()][super.getCutWidth()];
 
-        for ( int row = 0; row < getCutHeight(); row++ )
-            for ( int col = 0; col < getCutWidth(); col++ ) {
+        for ( int row = 0; row < super.getCutHeight(); row++ )
+            for ( int col = 0; col < super.getCutWidth(); col++ ) {
                 boxVolume[row][col] = valueUp;
                 valueUp ++;
             }
@@ -28,29 +28,29 @@ public class Box extends MyRectangle {
     }
 
     protected void clickBox(int x, int y) {
-        if (contains(x, y)) {
-            int indexX =(x - getX()) / getCut();
-            int indexY =(y - getY()) / getCut();
+        if (super.contains(x, y)) {
+            int indexX =(x - super.getX()) / super.getCut();
+            int indexY =(y - super.getY()) / super.getCut();
 
-            if ((indexX >= 0 && indexX <= getCutWidth())
-                    && (indexY >= 0 && indexY <= getCutHeight())) {
+            if ((indexX >= 0 && indexX <= super.getCutWidth())
+                    && (indexY >= 0 && indexY <= super.getCutHeight())) {
 
-                setFindX(indexX);
-                setFindY(indexY);
+                super.setFindX(indexX);
+                super.setFindY(indexY);
 
-                check = mp.box.tileNumbers[indexY][indexX] < mp.tileManager.tiles.size();
+                super.check = mp.box.tileNumbers[indexY][indexX] < mp.tileManager.tiles.size();
             } else {
-                check = false;
+                super.check = false;
             }
             mp.map.check = false;
         }
     }
 
     protected void paintBox() {
-        drawSelf(Color.BLUE);
+        super.drawSelf(Color.BLUE);
 
-        if (check) {
-            selected();
+        if (super.check) {
+            super.selected();
         }
     }
 }

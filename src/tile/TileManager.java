@@ -18,14 +18,14 @@ public class TileManager {
         this.mp = mp;
         tiles = new ArrayList<>();
         mapTiles = new ArrayList<>();
-        getTileImage();
+        this.getTileImage();
     }
 
     public void setGraphics2D(Graphics2D g2) {
         this.g2 = g2;
     }
 
-    public void getTileImage() {
+    private void getTileImage() {
         for (int i = 0; i <=10; i++)
             setup(i, "grass00" );
         // PLACEHOLDER
@@ -62,7 +62,7 @@ public class TileManager {
         setup(41, "tree" );
 
     }
-    public void mapSetup(int index, String imageName){
+    private void mapSetup(int index, String imageName){
         try {
 
             mapTiles.add(new Tile());
@@ -73,7 +73,7 @@ public class TileManager {
             e.printStackTrace();
         }
     }
-    public void setup(int index, String imageName){
+    private void setup(int index, String imageName){
         try {
 
             tiles.add(new Tile());
